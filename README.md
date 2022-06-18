@@ -18,6 +18,8 @@
 
 ![Untitled](%E5%A4%9A%E5%AA%92%E9%AB%94%20eec206c42afb4c3a83d295ed8f82c61c/Untitled%204.png)
 
+如果電腦記憶體小 道系統那邊將記憶體拉到1000以下(512MB)
+
 ### R1
 
 介面卡2 為 Subnet12的ip
