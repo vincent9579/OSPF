@@ -1,4 +1,4 @@
-# Project 4
+# OSPF一鍵設定
 
 請先設定虛擬機 R1 R2 R3
 
@@ -58,4 +58,4 @@ bash <(curl -Lso- https://raw.githubusercontent.com/vincent9579/OSPF/main/OSPF.s
 
 ![Untitled](%E5%A4%9A%E5%AA%92%E9%AB%94%20eec206c42afb4c3a83d295ed8f82c61c/Untitled%207.png)
 
-剩下的按照表單的說明即可
+作業的部分就依照作業做即可
