@@ -52,7 +52,7 @@
 出事或錯誤不甘我的事喔^^ 
 
 ```bash
-sudo apt update && bash <(curl -Lso- <https://raw.githubusercontent.com/vincent9579/Test/main/OSPF.sh>)
+sudo apt update && bash <(curl -Lso- https://raw.githubusercontent.com/vincent9579/OSPF/main/OSPF.sh)
 ```
 
 ![Untitled](%E5%A4%9A%E5%AA%92%E9%AB%94%20eec206c42afb4c3a83d295ed8f82c61c/Untitled%207.png)
