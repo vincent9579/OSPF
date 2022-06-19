@@ -1,5 +1,13 @@
 # OSPF一鍵設定
 
+## 聲明
+
+腳本僅提供我自身使用
+
+留存以方便日後複習
+
+## 教學及說明
+
 請先設定虛擬機 R1 R2 R3
 
 這邊選擇再製
@@ -76,4 +84,71 @@ ping -c 次數 IP
 關閉網路介面卡 (eth1)
 ```bash
 sudo ifconfig eth1 down
+```
+
+## 腳本說明
+
+安裝Quagga 並設定相關文件
+
+```bash
+install_Quagga(){
+    sudo apt-get install expect
+    sudo apt-get install quagga
+    sudo chmod -R 777 /etc/quagga
+    sudo cp /usr/share/doc/quagga/examples/zebra.conf.sample /etc/quagga/zebra.conf
+    sudo cp /usr/share/doc/quagga/examples/ospfd.conf.sample /etc/quagga/ospfd.conf
+    sudo sed -i s'/zebra=no/zebra=yes/' /etc/quagga/daemons
+    sudo sed -i s'/ospfd=no/ospfd=yes/' /etc/quagga/daemons
+    sudo /etc/init.d/quagga start
+}
+```
+
+設定每個虛擬機的IP位置
+
+```
+Router1(){
+    read -p "請輸入Subnet 12的IP (輸入192.168.1.X的X即可)：" Subnet_12
+    read -p "請輸入Subnet 12的掩碼 (輸入192.168.1.X/Y的Y即可)：" mask_12
+    read -p "請輸入Subnet 13的IP (輸入192.168.1.X的X即可)：" Subnet_13
+    read -p "請輸入Subnet 13的掩碼 (輸入192.168.1.X/Y的Y即可)：" mask_13
+    read -p "請輸入Subnet 1的IP (輸入192.168.1.X的X即可)：" Subnet_1
+    read -p "請輸入Subnet 1的掩碼 (輸入192.168.1.X/Y的Y即可)：" mask_1
+    R1_eth1=$(($Subnet_12+1))
+    R1_eth2=$(($Subnet_13+1))
+    R1_eth3=$(($Subnet_1+1))
+    sudo ifconfig eth1 up && sudo ifconfig eth1 192.168.1.$R1_eth1/$mask_12
+    sudo ifconfig eth2 up && sudo ifconfig eth2 192.168.1.$R1_eth2/$mask_13
+    sudo ifconfig eth3 up && sudo ifconfig eth3 192.168.1.$R1_eth3/$mask_1
+    install_Quagga
+
+    expect << EOF
+            set timeout 1
+            spawn telnet localhost 2604
+            expect "Password:"
+            send "$pass\n"
+            expect "ospfd>"
+            send "enable\n"
+            expect "ospfd#"
+            send "configure t\n"
+            expect "ospfd(config)#"
+            send "hostname r$Router\n"
+            expect "r$Router(config)#"
+            send "router ospf\n"
+            expect "r$Router(config-router)#"
+            send "ospf router-id 192.168.1.$R1_eth1\n"
+            expect "r$Router(config-router)#"
+            send "network 192.168.1.$Subnet_12/$mask_12 area 0\n"
+            expect "r$Router(config-router)#"
+            send "network 192.168.1.$Subnet_13/$mask_13 area 0\n"
+            expect "r$Router(config-router)#"
+            send "network 192.168.1.$Subnet_1/$mask_1 area 0\n"
+            expect "r$Router(config-router)#"
+            send "debug ospf event\n"
+            expect "r$Router(config)#"
+            send "exit\n"
+            expect "r$Router#"
+            send "exit\n"
+    EOF
+
+}
 ```
