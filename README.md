@@ -53,6 +53,7 @@
 ![Untitled](%E5%A4%9A%E5%AA%92%E9%AB%94%20eec206c42afb4c3a83d295ed8f82c61c/Untitled%206.png)
 
 開啟R1 R2 R3 複製下列指令打到終端
+
 出事或錯誤不甘我的事喔^^ 
 
 ```bash
@@ -63,3 +64,16 @@ bash <(curl -Lso- https://raw.githubusercontent.com/vincent9579/OSPF/main/OSPF.s
 ![Untitled](%E5%A4%9A%E5%AA%92%E9%AB%94%20eec206c42afb4c3a83d295ed8f82c61c/Untitled%207.png)
 
 作業的部分就依照作業做即可
+
+#### 作業提示
+
+Ping指令
+
+```bash
+ping -c 次數 IP
+```
+
+關閉網路介面卡 (eth1)
+```bash
+sudo ifconfig eth1 down
+```
