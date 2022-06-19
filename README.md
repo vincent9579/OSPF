@@ -2,9 +2,11 @@
 
 ## 聲明
 
-腳本僅提供我自身使用
+腳本僅提供我自身使用，腳本並沒有經過測試
 
-留存以方便日後複習
+開發腳本只為了方便我自身測試及使用
+
+此頁面留存的資料僅為了日後方便複習
 
 ## 教學及說明
 
@@ -62,8 +64,6 @@
 
 開啟R1 R2 R3 複製下列指令打到終端
 
-出事或錯誤不甘我的事喔^^ 
-
 ```bash
 sudo apt update
 bash <(curl -Lso- https://raw.githubusercontent.com/vincent9579/OSPF/main/OSPF.sh)
@@ -71,9 +71,8 @@ bash <(curl -Lso- https://raw.githubusercontent.com/vincent9579/OSPF/main/OSPF.s
 
 ![Untitled](%E5%A4%9A%E5%AA%92%E9%AB%94%20eec206c42afb4c3a83d295ed8f82c61c/Untitled%207.png)
 
-作業的部分就依照作業做即可
 
-#### 作業提示
+#### 常見命令
 
 Ping指令
 
@@ -82,6 +81,12 @@ ping -c 次數 IP
 ```
 
 關閉網路介面卡 (eth1)
+```bash
+sudo ifconfig eth1 down
+```
+
+
+開啟網路介面卡 (eth1)
 ```bash
 sudo ifconfig eth1 down
 ```
@@ -105,7 +110,7 @@ install_Quagga(){
 
 設定每個虛擬機的IP位置
 
-```
+```bash
 Router1(){
     read -p "請輸入Subnet 12的IP (輸入192.168.1.X的X即可)：" Subnet_12
     read -p "請輸入Subnet 12的掩碼 (輸入192.168.1.X/Y的Y即可)：" mask_12
@@ -113,9 +118,9 @@ Router1(){
     read -p "請輸入Subnet 13的掩碼 (輸入192.168.1.X/Y的Y即可)：" mask_13
     read -p "請輸入Subnet 1的IP (輸入192.168.1.X的X即可)：" Subnet_1
     read -p "請輸入Subnet 1的掩碼 (輸入192.168.1.X/Y的Y即可)：" mask_1
-    R1_eth1=$(($Subnet_12+1))
-    R1_eth2=$(($Subnet_13+1))
-    R1_eth3=$(($Subnet_1+1))
+    R1_eth1=$(($Subnet_12+1)) #R2為+2
+    R1_eth2=$(($Subnet_13+1)) #R3為+2
+    R1_eth3=$(($Subnet_1+1)) #R1 R2 R3 皆為+1
     sudo ifconfig eth1 up && sudo ifconfig eth1 192.168.1.$R1_eth1/$mask_12
     sudo ifconfig eth2 up && sudo ifconfig eth2 192.168.1.$R1_eth2/$mask_13
     sudo ifconfig eth3 up && sudo ifconfig eth3 192.168.1.$R1_eth3/$mask_1
