@@ -14,19 +14,19 @@
 
 這邊選擇再製
 
-![Untitled](%E5%A4%9A%E5%AA%92%E9%AB%94%20eec206c42afb4c3a83d295ed8f82c61c/Untitled.png)
+![Untitled](%E5%A4%9A%E5%AA%92%E9%AB%94/Untitled.png)
 
 注意 MAC位址原則請調整為產生新的MAC位址
 
-![Untitled](%E5%A4%9A%E5%AA%92%E9%AB%94%20eec206c42afb4c3a83d295ed8f82c61c/Untitled%201.png)
+![Untitled](%E5%A4%9A%E5%AA%92%E9%AB%94/Untitled%201.png)
 
-![Untitled](%E5%A4%9A%E5%AA%92%E9%AB%94%20eec206c42afb4c3a83d295ed8f82c61c/Untitled%202.png)
+![Untitled](%E5%A4%9A%E5%AA%92%E9%AB%94/Untitled%202.png)
 
 這邊選擇設定
 
-![Untitled](%E5%A4%9A%E5%AA%92%E9%AB%94%20eec206c42afb4c3a83d295ed8f82c61c/Untitled%203.png)
+![Untitled](%E5%A4%9A%E5%AA%92%E9%AB%94/Untitled%203.png)
 
-![Untitled](%E5%A4%9A%E5%AA%92%E9%AB%94%20eec206c42afb4c3a83d295ed8f82c61c/Untitled%204.png)
+![Untitled](%E5%A4%9A%E5%AA%92%E9%AB%94/Untitled%204.png)
 
 #### 如果電腦記憶體小(RAM 小於4GB) 
 
@@ -56,11 +56,11 @@
 
 介面卡4 為 Subnet3的ip
 
-![Untitled](%E5%A4%9A%E5%AA%92%E9%AB%94%20eec206c42afb4c3a83d295ed8f82c61c/Untitled%205.png)
+![Untitled](%E5%A4%9A%E5%AA%92%E9%AB%94/Untitled%205.png)
 
 選取群駔 啟動
 
-![Untitled](%E5%A4%9A%E5%AA%92%E9%AB%94%20eec206c42afb4c3a83d295ed8f82c61c/Untitled%206.png)
+![Untitled](%E5%A4%9A%E5%AA%92%E9%AB%94/Untitled%206.png)
 
 開啟R1 R2 R3 複製下列指令打到終端
 
@@ -69,7 +69,7 @@ sudo apt update
 bash <(curl -Lso- https://raw.githubusercontent.com/vincent9579/OSPF/main/OSPF.sh)
 ```
 
-![Untitled](%E5%A4%9A%E5%AA%92%E9%AB%94%20eec206c42afb4c3a83d295ed8f82c61c/Untitled%207.png)
+![Untitled](%E5%A4%9A%E5%AA%92%E9%AB%94/Untitled%207.png)
 
 
 #### 常見命令
